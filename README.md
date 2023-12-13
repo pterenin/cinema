@@ -1,7 +1,11 @@
 # Getting Started with Cinema App
 
-## Clone the project.
-## Run `npm install` to install node modules
+1. Clone the project. 
+2. Run **npm install** to install node modules
+3. run: **npm run start** to run the app in the development mode. 
+4. Open **http://localhost:3000** to view it in the browser. 
+5. Run **npm run test**  to run unit tests
+6. Get valid **API_KEY **from themoviedb.org. Use this API key in **/src/unitls/urlUtils.ts**.
 
 ## Available Scripts
 
