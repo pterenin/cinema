@@ -1,7 +1,7 @@
-# Getting Started with Create React App
+# Getting Started with Cinema App
 
-Clone the project.
-Run `npm install` to install node modules
+## Clone the project.
+## Run `npm install` to install node modules
 
 ## Available Scripts
 
