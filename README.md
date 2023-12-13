@@ -1,5 +1,6 @@
 # Getting Started with Create React App
 
+Clone the project.
 Run `npm install` to install node modules
 
 ## Available Scripts
