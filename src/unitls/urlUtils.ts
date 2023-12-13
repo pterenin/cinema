@@ -1,4 +1,4 @@
-// export const API_KEY = <API_KEY>; // ADD your API KEY;
+export const API_KEY = ''; // Add your valid API key
 export const baseUrl = 'https://api.themoviedb.org';
 export const baseImgUrl = 'https://image.tmdb.org/t/p/';
 
