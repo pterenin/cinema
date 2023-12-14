@@ -101,7 +101,7 @@ describe('MovieGrid', () => {
             });
         });
 
-        expect(mockedNavigate).toHaveBeenCalledWith("/movie", { state: { movie: mockMovies.data.results[0] } });
+        expect(mockedNavigate).toHaveBeenCalledWith(`/movie/${mockMoviesData[0].id}`);
     });
 
 });

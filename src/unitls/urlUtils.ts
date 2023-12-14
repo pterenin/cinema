@@ -1,4 +1,4 @@
-export const API_KEY = ''; // Add your valid API key
+export const API_KEY = '8aadc3a9451d641bd66e0bdc91f6f8bd';
 export const baseUrl = 'https://api.themoviedb.org';
 export const baseImgUrl = 'https://image.tmdb.org/t/p/';
 
@@ -18,9 +18,9 @@ export const generateImgUrl = (path: string, size: string = SIZES.medium): strin
     return `${baseImgUrl}${size}${path}`;
 }
 
-export const genetateMovieDetailsUrl = (movieId: number) => {
+export const genetateMovieDetailsUrl = (movieId: string) => {
     return `${baseUrl}/3/movie/${movieId}?api_key=${API_KEY}`
 }
-export const genetateMovieVideosUrl = (movieId: number) => {
+export const genetateMovieVideosUrl = (movieId: string) => {
     return `${baseUrl}/3/movie/${movieId}/videos?api_key=${API_KEY}`
 }

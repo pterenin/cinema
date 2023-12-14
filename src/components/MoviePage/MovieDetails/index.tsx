@@ -6,49 +6,58 @@ import "./styles.scss";
 import VideoTrailer from "../VideoTrailer";
 
 interface PropTypes {
-    movie: MovieType;
+    movieId?: string;
 }
 
-function MovieDetails({ movie }: PropTypes) {
+function MovieDetails({ movieId }: PropTypes) {
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
     const [movieDetails, setMovieDetails] = useState<MovieDetailsType | null>(null);
     const [videoDetails, setVideoDetails] = useState<VideoDetailsType[] | []>([]);
 
     useEffect(() => {
-        if (!movie) return;
-        const url = genetateMovieDetailsUrl(movie.id);
-        const videosUrl = genetateMovieVideosUrl(movie.id);
+        if (!movieId) return setIsLoaded(true);
+        const url = genetateMovieDetailsUrl(movieId);
+        const videosUrl = genetateMovieVideosUrl(movieId);
         axios.get(url).then(result => {
             const data: MovieDetailsType = result.data;
-            console.log(data);
             setMovieDetails(data);
+            setIsLoaded(true);
         });
 
         axios.get(videosUrl).then(result => {
             setVideoDetails(result.data.results);
         });
 
-    }, [movie]);
+    }, [movieId]);
 
     const getYear = () => {
-        return new Date(movie.release_date).getFullYear();
+        if (!movieDetails) return '';
+        return new Date(movieDetails.release_date).getFullYear();
     }
 
-    const getRating = () => {
+    const getRating = (): string => {
         if (!movieDetails || !movieDetails?.vote_average) return '';
         return `${Math.round(movieDetails?.vote_average * 100) / 100}/10`;
     }
 
-    const getDuration = () => {
+    const getDuration = (): string => {
         if (!movieDetails) return '';
         return `${movieDetails?.runtime} mins`;
     }
 
-    if (!movie || !movieDetails) { return <div className="movie-detailes"><h1>No Movie to render. Please select a movie.</h1></div> }
+    const getImgSrc = (): string => {
+        if (!movieDetails) return '';
+        return generateImgUrl(movieDetails.poster_path)
+    }
+
+    if (!movieDetails && isLoaded) {
+        return <div className="movie-detailes"><h1>No Movie to render. Please select a movie.</h1></div>
+    }
 
     return (
         <div className="movie-detailes">
             <div className="sub-header">
-                <h2>{movie ? movie.original_title : 'Error'}</h2>
+                <h2>{movieDetails ? movieDetails.original_title : 'Error'}</h2>
             </div>
 
             <section className="movie-card">
@@ -58,8 +67,8 @@ function MovieDetails({ movie }: PropTypes) {
                     <p className="rating">{getRating()}</p>
                     <button onClick={() => { }} className="favorite-btn">Add to Favorite</button>
                 </div>
-                <img src={generateImgUrl(movie.poster_path)} alt={`${movie.title} Movie Poster`} className="movie-poster" />
-                <p className="movie-description">{movie.overview}</p>
+                <img src={getImgSrc()} alt={`${movieDetails?.title} Movie Poster`} className="movie-poster" />
+                <p className="movie-description">{movieDetails?.overview}</p>
             </section>
             <section className="trailers">
                 <h3>TRAILERS</h3>

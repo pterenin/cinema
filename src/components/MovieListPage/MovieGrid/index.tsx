@@ -23,16 +23,16 @@ const MovieGrid: React.FC = () => {
             const movies = result.data.results;
             setTotalPages(updatedTotalPages);
             setMovieList([...movieList, ...movies]);
+            setPage(page + 1);
         });
     }
 
     const fetchNextPage = () => {
-        setPage(page + 1);
         fetchData();
     }
 
     const clickHandler = (movie: MovieType) => {
-        navigate("/movie", { state: { movie } });
+        navigate(`/movie/${movie.id}`);
     }
 
     return (

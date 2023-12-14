@@ -98,7 +98,7 @@ describe('MovieDetails', () => {
     });
 
     it('renders movie details correctly', async () => {
-        render(<MovieDetails movie={mockMovie} />);
+        render(<MovieDetails movieId={mockMovie.id} />);
 
         await waitFor(() => {
             expect(screen.getByText('Wonka')).toBeInTheDocument();
