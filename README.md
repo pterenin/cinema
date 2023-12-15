@@ -8,6 +8,7 @@
 6. Get valid **API_KEY** from themoviedb.org. Use this API key in **/src/unitls/urlUtils.ts**.
 
  <img width="962" alt="Screenshot 2023-12-15 at 12 16 39 PM" src="https://github.com/pterenin/cinema/assets/17990616/25be267a-a41a-43df-87c0-c6d724a1677c">
+
 ## Available Scripts
 
 In the project directory, you can run:
